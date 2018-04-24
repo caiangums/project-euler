@@ -1,21 +1,25 @@
 #include <stdio.h>
 
+#define LIMIT 1000
+
 int main() {
-    unsigned result = 0;
-    bool correct = true;
-    for (unsigned i = 3; i < 1000; i += 6) {
+    // This number will never be passed with this algorithm
+    unsigned result = 5;
+    for (unsigned i = 3; i < LIMIT; i += 6) {
         unsigned j = i;
-        while (j <= 1000) {
+        while (j < LIMIT) {
             result += j;
-            j = j << 2;
-            correct = correct && !(j % 3);
+            if (!(j % 5)) {
+                result += (j-5);
+                if (j+5 < LIMIT) {
+                    result += (j+5);
+                }
+            }
+            //printf("result = %u, i = %u\n", result, j);
+            j = j << 1;
         }
     }
 
-    if (correct) {
-        printf("Is correct!\n");
-    }
-
-    printf("Result from 3 is: %u!\n", result);
+    printf("Result is %u\n", result);
     return 0;
 }
