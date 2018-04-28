@@ -118,7 +118,7 @@ fib(n) = (Phi^n - (-(phi)^n)) / sqrt(5);
 With this formula the fibonacci number can be found in `O(1)`, that reduces even more the processing time spent.
 
 ## Result
-To see the real function beeing tested, I compiled and tested with a big number, the greater without overflow. The number is 100000000.
+To see the real function beeing tested, I compiled and tested with a big number, the greater without overflow. The number is 1000000000.
 
 The final code is
 ```cpp
