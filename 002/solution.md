@@ -37,7 +37,7 @@ int main(int argc, char** argv) {
 
 As you may notice the first number that this fibonacci implementation output is `0`. This is not my first implementation of the sequence but later I'll discuss why I did this.
 
-The important thing here is: I have my fibonacci implementation that is recursive and have `O(n)`.
+The important thing here is: I have my fibonacci implementation that is recursive and have `O(2^n)`.
 
 #### Problem Solving
 I felt that the problem as it is was easy to solve, and probably that's why it is a `5%` difficulty problem.
@@ -84,7 +84,7 @@ int main(int argc, char** argv) {
 
 Here I changed a little the fibonacci generator function just to act like the real problem description in order to get the feeling of solving the problem. As I said: this is the 'brute force' version and with no further analysis.
 
-This code has a for-loop `O(n)` that has a recursive call to fibonacci function `O(n)`. The moment I look this I searched for some solution or a better approach.
+This code has a for-loop `O(n)` that has a recursive call to fibonacci function `O(2^n)`. The moment I look this I searched for some solution or a better approach.
 
 
 ### Step 02 - Analyze the Solution
@@ -134,7 +134,7 @@ typedef long double LD;
 typedef unsigned long long ULL;
 
 LD phi = (sqrt(5) + 1) / 2;
-LD phi_inverse = phi - 1;;
+LD phi_inverse = phi - 1;
 
 ULL fib(int i) {
     return (ULL) ((pow(phi, i) - pow(-phi_inverse, i)) / sqrt(5));
