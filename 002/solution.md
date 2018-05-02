@@ -1,9 +1,11 @@
-# How my solution works
+All the code discussed and presented here can be seen in my [personal repository](https://github.com/caian-gums/project-euler/).
 
-Using some analysis about the problem and lookin in the web for some better solutions as alternatives to 'brute force', I found something to explore a better aproach to Fibonacci numbers: The  _Binet's Formula for the nth Fibonacci Number_. Let's deep dive.
+# How the solution works
+
+Using some analysis about the problem and looking in the web for some better solutions as alternatives to 'brute force', I found something to explore a better approach to Fibonacci numbers: The  _Binet's Formula for the nth Fibonacci Number_. Let's deep dive.
 
 ### Step 01 - Brute Force
-First things first. Before try to solve the problem, I wrote a fibonacci function as it is well known.
+First things first. Before trying to solve the problem, I wrote a fibonacci function as it is well known.
 
 #### Fibonacci nth number Generator - Brute Force Version
 
@@ -33,7 +35,7 @@ int main(int argc, char** argv) {
 }
 ```
 
-As you may notice the first number that this fibonacci implementation output is `0`. This is not my first implementation of the sequence but later I'll discuss why I done this.
+As you may notice the first number that this fibonacci implementation output is `0`. This is not my first implementation of the sequence but later I'll discuss why I did this.
 
 The important thing here is: I have my fibonacci implementation that is recursive and have `O(n)`.
 
@@ -82,14 +84,14 @@ int main(int argc, char** argv) {
 
 Here I changed a little the fibonacci generator function just to act like the real problem description in order to get the feeling of solving the problem. As I said: this is the 'brute force' version and with no further analysis.
 
-This code has a for-loop `O(n)` that has a recursive call to fibonacci function `O(n)`. The moment I look this I searched for some solution or better approach.
+This code has a for-loop `O(n)` that has a recursive call to fibonacci function `O(n)`. The moment I look this I searched for some solution or a better approach.
 
 
 ### Step 02 - Analyze the Solution
 
-If you read my `solution.md` on previous problem you will get the feeling that I'm doing the same trick here. And that is exactly the thing that I'm doing.
+If you read my `solution.md` on the previous problem you will get the feeling that I'm doing the same trick here. And that is exactly the thing that I'm doing.
 
-I started to scratch the number and noticed that they have some interesting properties. Based on Mathematic Properties of numbers:
+I started to scratch the number and noticed that they have some interesting properties. Based on Mathematics Properties of numbers:
 * The sum of two different integer numbers can only be **even** or **odd**.
 * If the numbers are both **even** or **odd** the sum is **even**
 * If the numbers are different (one **even** and other **odd**) the sum is **odd**
@@ -106,19 +108,19 @@ So, You just need to jump between 3 numbers to sum all even numbers on fibonacci
 for (ULL i = 1; fn < limit; i += 3)
 ```
 
-This simple analysis reduce the running time by half with no mathematic otimization.
+This simple analysis reduces the running time by half with no mathematic optimization.
 
 ### Step 03 - The Binet's Formula
-You can search on reference section for the link about this. The formula is based on the **Phi** number and it's inverse (**phi**).
+You can search on reference section for the link about this. The formula is based on the **Phi** number and its inverse (**phi**).
 The code is
 ```cpp
 fib(n) = (Phi^n - (-(phi)^n)) / sqrt(5);
 ```
 
-With this formula the fibonacci number can be found in `O(1)`, that reduces even more the processing time spent.
+With this formula, the fibonacci number can be found in `O(1)`, that reduces, even more, the processing time spent.
 
 ## Result
-To see the real function beeing tested, I compiled and tested with a big number, the greater without overflow. The number is 1000000000.
+To see the real function being tested, I compiled and tested with a big number, the greater without overflow. The number is 1000000000.
 
 The final code is
 ```cpp
@@ -158,6 +160,8 @@ int main(int argc, char** argv) {
     return 0;
 }
 ```
+
+# Performance
 
 The output on my terminal was:
 ```
