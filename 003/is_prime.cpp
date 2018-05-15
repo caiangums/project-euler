@@ -8,13 +8,10 @@ bool isInteger(double d) {
 }
 
 bool isPrime(int n) {
-    if (!n || n == 1) {
-        return false;
-    }
     if (n == 2 || n == 3) {
         return true;
     }
-    if (n % 2 == 0) {
+    if (!n || n == 1 || n % 2 == 0) {
         return false;
     }
     for(int i = 3; i < n; i += 2) {
