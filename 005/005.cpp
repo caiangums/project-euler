@@ -12,7 +12,6 @@ bool is_integer(double d) {
     return floor(d) == d;
 }
 
-
 bool is_prime(int n) {
     if (n == 2 || n == 3) {
         return true;
@@ -29,14 +28,6 @@ bool is_prime(int n) {
     return true;
 }
 
-void fill_prime_list(list<int>* primes) {
-    for (int i = 2; i < 20; i++) {
-        if (is_prime(i)) {
-            primes->push_back(i);
-        }
-    }
-}
-
 int next_prime(list<int>* primes) {
     int v = primes->front();
     primes->pop_front();
@@ -49,7 +40,7 @@ bool are_equal(list<int> first, list<int> second) {
     }
     list<int>::iterator f;
     list<int>::iterator s;
-    for(f = first.begin(), s = second.begin(); f != first.end() && s != second.end(); f++, s++) {
+    for(f = first.begin(), s = second.begin(); f != first.end(); f++, s++) {
         if (f != s) {
             return false;
         }
@@ -58,42 +49,38 @@ bool are_equal(list<int> first, list<int> second) {
 }
 
 int solve() {
-    // fill numbers
-    list<int> l;
+    // numbers list, prime list
+    list<int> nl, pl;
     for (int i = 1; i <= 20; i++) {
-        l.push_back(i);
+        nl.push_back(i);
+        if (is_prime(i)) {
+            pl.push_back(i);
+        }
     }
 
-    // fill prime list
-    list<int> primes;
-    fill_prime_list(&primes);
-
-    // get prime
-    int prime = next_prime(&primes);
-    bool run = true, stopped;
+    int prime = next_prime(&pl);
+    bool stopped;
     int result = 1;
-    while (run) {
-        list<int> m;
+    while (nl.size() != 0) {
+        // new numbers list
+        list<int> nnl;
         stopped = true;
-        l.remove_if(equal_one);
-        for (int v : l) {
-            if (v % prime != 0) {
-                m.push_back(v);
+        nl.remove_if(equal_one);
+        for (int val : nl) {
+            if (val % prime != 0) {
+                nnl.push_back(val);
             } else {
-                m.push_back(v/prime);
+                nnl.push_back(val/prime);
                 stopped = false;
             }
         }
-        m.remove_if(equal_one);
-        if (!stopped && !are_equal(l, m)) {
+        nnl.remove_if(equal_one);
+        if (!stopped && !are_equal(nl, nnl)) {
             result = result * prime;
         } else {
-            prime = next_prime(&primes);
+            prime = next_prime(&pl);
         }
-        l = m;
-        if (l.size() == 0) {
-            run = false;
-        }
+        nl = nnl;
     }
     return result;
 }
