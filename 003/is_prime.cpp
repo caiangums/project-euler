@@ -3,20 +3,20 @@
 
 using namespace std;
 
-bool isInteger(double d) {
+bool is_integer(double d) {
     return floor(d) == d;
 }
 
-bool isPrime(int n) {
+bool is_prime(int n) {
     if (n == 2 || n == 3) {
         return true;
     }
     if (!n || n == 1 || n % 2 == 0) {
         return false;
     }
-    for(int i = 3; i < n; i += 2) {
+    for(int i = 3; i <= sqrt(n); i += 2) {
         double result = (double) n / (double) i;
-        if (isInteger(result)) {
+        if (is_integer(result)) {
             return false;
         }
     }
@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
         n = atoi(argv[1]);
     }
 
-    if (isPrime(n)) {
+    if (is_prime(n)) {
         cout << n << " is prime!" << endl;
     } else {
         cout << n << " is NOT prime!" << endl;
