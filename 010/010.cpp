@@ -26,8 +26,8 @@ bool is_prime(int n) {
 
 long solve() {
     int i;
-    long rv = 0;
-    for (i = 1; i < 2000000; i++) {
+    long rv = 2;
+    for (i = 1; i < 2000000; i += 2) {
         if (is_prime(i)) {
             rv += i;
         }
