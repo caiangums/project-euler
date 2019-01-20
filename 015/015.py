@@ -6,5 +6,5 @@ def fact_stop(val, s):
 
 n = int(input('Give a number\n'))
 
-result = fact(2*n, n)/fact(n)
+result = fact_stop(2*n, n)/fact(n)
 print('Result = {}'.format(result))

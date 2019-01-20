@@ -15,7 +15,7 @@ double lattice_paths(int n) {
     double t = fact_stop(2*n, n);
     cout << "t=" << t << ", ";
     double d = fact(n);
-    cout << "d=" << d << endl;;
+    cout << "d=" << d << endl;
     return (double) t/d;
 }
 
